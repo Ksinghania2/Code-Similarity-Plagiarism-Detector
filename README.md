@@ -3,6 +3,9 @@
 A static analysis utility engineered in Python to parse source code documents and quantify their structural similarity using set tokenization algorithms.
 
 The engine normalizes source files to eliminate surface modifications such as formatting differences, whitespace shifts, and comment additions. It evaluates structural overlap by computing the mathematical Jaccard Similarity Coefficient, exposing algorithmic copying even when variable identifiers are altered.
+## Example
+
+If a student copies an assignment line-by-line, it is easy to catch. But if they change a few variable names or add extra spaces, a simple word-by-word comparison fails. This project builds a smart engine that ignores those surface changes and detects the actual structural copying.
 
 ## Algorithmic Framework
 
