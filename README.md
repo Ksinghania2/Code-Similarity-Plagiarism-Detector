@@ -1,23 +1,15 @@
-# Static Code Plagiarism and Similarity Detector
+# Token-Based Code Similarity Demo
 
-A static analysis utility engineered in Python to parse source code documents and quantify their structural similarity using set tokenization algorithms.
+A small Python script that compares two files by lowercasing their text, extracting word-like tokens, converting them to sets, and calculating Jaccard similarity. It is a simple lexical overlap demonstration, not a plagiarism detector that can determine authorship or intent.
 
-The engine normalizes source files to eliminate surface modifications such as formatting differences, whitespace shifts, and comment additions. It evaluates structural overlap by computing the mathematical Jaccard Similarity Coefficient, exposing algorithmic copying even when variable identifiers are altered.
-## Example
-
-If a student copies an assignment line-by-line, it is easy to catch. But if they change a few variable names or add extra spaces, a simple word-by-word comparison fails. This project builds a smart engine that ignores those surface changes and detects the actual structural copying.
-
-## Algorithmic Framework
-
-1. Lexical Normalization: Parses raw text inputs to strip single-line comments and strip non-alphanumeric formatting components. Text streams are lowercased to achieve architectural uniformity.
-
-2. Set Tokenization: Maps the normalized text tokens into discrete mathematical set structures. This removes token count overhead and focuses exclusively on the presence of distinct logical elements.
-
-3. Jaccard Coefficient Metric: Evaluates the exact size of the intersection set (matching tokens) divided by the union set (total unique tokens combined). This produces a standardized similarity footprint ranging between 0% and 100%.
-
-## Deployment and Verification
-
-Execute the standalone analysis loop via the command line interface:
+## Run
 
 ```bash
-python3 plagiarism_detector.py
+python plagiarism_detector.py
+```
+
+The script creates `student_a.py` and `student_b.py` in the current directory and compares them. Run it from a disposable directory if those filenames already contain files you want to keep.
+
+## Scope and limitations
+
+This is not syntax-aware: it does not parse an abstract syntax tree, and identifier names remain part of the token sets, so renaming variables can change the score. Comment removal is a simple regular expression rather than a language-aware parser. A similarity percentage is only a signal for manual review and must not be used by itself to decide plagiarism.
